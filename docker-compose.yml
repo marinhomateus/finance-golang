@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  db:
+    container_name: postgres-go
+    image: postgres:14.4-alpine
+    restart: always
+    networks:
+      - my_network
+    env_file: database.conf
+    ports:
+      - 9001:5432  
+    volumes:
+      - db_volume:/var/lib/postgresql
+
+networks:
+  my_network:
+
+volumes:
+  db_volume:
